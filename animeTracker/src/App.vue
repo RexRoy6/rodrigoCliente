@@ -126,7 +126,7 @@ onMounted(() => {
     font-family: 'Fira Sans', sans-serif;
   }
   body {
-    background-color: #808080;
+    background-color: #36454f;
   }
   main {
     margin: 0 auto;
@@ -156,11 +156,11 @@ onMounted(() => {
   .button {
     appearance: none;
     outline: none;
-    border: none;
+    border: 50px;
     background: none;
     cursor: pointer;
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1.5rem;
     background-image: linear-gradient(to right, deeppink 50%, darkviolet 50%);
     background-size: 200%;
     color: white;
