@@ -38,9 +38,17 @@ const addAnime = (anime) => {
       watched_episodes: 0
   })
 
+
   localStorage.setItem('my_anime', JSON.stringify(my_anime.value))
 }
 
+const removeAnime =(anime) => {
+
+  console.log("anime:",my_anime.value.indexOf(anime));
+  my_anime.value.splice(my_anime.value.indexOf(anime),1);
+  localStorage.setItem('my_anime', JSON.stringify(my_anime.value))
+  
+}
 
 const increaseWatch = (anime) => {
   anime.watched_episodes++
@@ -102,6 +110,8 @@ onMounted(() => {
 
                   <button v-if="anime.watched_episodes > 0"
                   @click="decreaseWatch(anime)">-</button>
+
+                  <button @click="removeAnime(anime)">Remove</button>
               </div>
         </div>
     </main>
@@ -116,7 +126,7 @@ onMounted(() => {
     font-family: 'Fira Sans', sans-serif;
   }
   body {
-    background-color: #EEE;
+    background-color: #808080;
   }
   main {
     margin: 0 auto;
@@ -136,7 +146,7 @@ onMounted(() => {
     appearance: none;
     outline: none;
     border: none;
-    background: white;
+    background: #FFFFFF;
     display: block;
     color: #888;
     font-size: 1.125rem;
@@ -163,7 +173,7 @@ onMounted(() => {
     background-position: right;
   }
   .results {
-    background-color: #fff;
+    background-color: #808080;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-height: 480px;
