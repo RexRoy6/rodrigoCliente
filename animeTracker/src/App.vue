@@ -67,7 +67,8 @@ onMounted(() => {
   my_anime.value = JSON.parse(localStorage.getItem('my_anime')) || []
 })
 
-//new vue() //variable para spinner
+//variable para spinner
+
 
 </script>
 
@@ -84,9 +85,7 @@ onMounted(() => {
         </form>
         
 
-        <div v-if="vue>1">
-          <Spinner/>
-        </div>
+       
 
         <div class="results" v-if="search_results.length > 0">
               <div  v-for="anime in search_results" class="result">
