@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
+import Spinner from '../components/spinner.vue';
 
 
 const query = ref('')  //cambiar const a var
@@ -72,6 +73,7 @@ onMounted(() => {
 <template>
     <main>
         <h1>My Anime Tracker</h1>
+              <Spinner/>
 
         <form @submit.prevent="searchAnime">
             <input 
