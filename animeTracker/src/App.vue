@@ -36,6 +36,7 @@ const addAnime = (anime) => {
       title: anime.title,
       image: anime.images.jpg.image_url,
       total_episodes: anime.episodes,
+      text: anime.synopsis, 
       watched_episodes: 0
   })
 
@@ -66,14 +67,13 @@ onMounted(() => {
   my_anime.value = JSON.parse(localStorage.getItem('my_anime')) || []
 })
 
-//const removeAnime =(anime) => {}
+//new vue() //variable para spinner
 
 </script>
 
 <template>
     <main>
         <h1>My Anime Tracker</h1>
-              <Spinner/>
 
         <form @submit.prevent="searchAnime">
             <input 
@@ -82,6 +82,11 @@ onMounted(() => {
             <button type="submit">Search</button>
 
         </form>
+        
+
+        <div v-if="vue>1">
+          <Spinner/>
+        </div>
 
         <div class="results" v-if="search_results.length > 0">
               <div  v-for="anime in search_results" class="result">
@@ -103,6 +108,9 @@ onMounted(() => {
               <div v-for="anime in my_anime_asc" class="anime">
                   <img :src="anime.image" />
                   <h3>{{ anime.title }}</h3>
+                  <div class="details2">
+                      <p>{{ anime.text.slice(0,150) }}</p>
+                  </div>
                   <div class="flex-1"></div>
                   <span class="episodes">
                       {{ anime.watched_episodes }} / {{ anime.total_episodes}}
@@ -114,6 +122,7 @@ onMounted(() => {
                   @click="decreaseWatch(anime)">-</button>
 
                   <button @click="removeAnime(anime)">Remove</button>
+      
               </div>
         </div>
     </main>
@@ -209,6 +218,13 @@ onMounted(() => {
     font-size: 0.875rem;
     margin-bottom: 1rem;
   }
+  .details2 p {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    align-items: start;
+    flex-direction: column;
+    color:#36454f;
+  }
   .details .button {
     margin-left: auto;
   }
@@ -217,7 +233,7 @@ onMounted(() => {
     flex: 1 1 0%;
   }
   .myanime h2 {
-    color: #888;
+    color: #FFF;
     font-weight: 400;
     margin-bottom: 1.5rem;
   }
